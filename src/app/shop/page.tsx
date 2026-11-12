@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, Suspense, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
@@ -24,6 +24,17 @@ function ShopContent() {
   const [sortBy, setSortBy] = useState<string>('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Sync category state whenever query parameter changes (from Header menu or Shop by Category)
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat) {
+      setSelectedCategory(cat);
+    } else {
+      setSelectedCategory('All');
+    }
+    setCurrentPage(1);
+  }, [searchParams]);
 
   const categories = [
     { name: 'All', count: products.length },

@@ -49,7 +49,7 @@ A floating button at the bottom-left of every screen allows the client or evalua
   - **Staggered Grid Arrangement:** Category circles, product grids, and trust cards cascade into view sequentially, arranging smoothly into place as they enter the viewport.
   - **Image Diagonal White Light Sheen:** Hovering over images on the Home page and Search/Shop page triggers a smooth diagonal white light reflection sweep.
   - **Live Gold Rate Beacon:** Pulsating live radar indicator in the header announcement bar.
-  - **Expanding Gold Filament Underlines:** Navigation links bloom outward with a golden hairline underline on hover.
+  - **Expanding Gold Filament Underlines:** Navigation links bloom outward with a golden hairline underline on hover, with precise query parameter matching so only the single active category is underlined.
   - **Order Tracking Radar Ping:** Concentric pulsating radar ring highlighting the customer's active order tracking milestone.
   - **Prototype Navigator Breathing Aura:** Golden edge breathing aura on the floating prototype bar.
 - **Favicon Suite:** Custom royal emerald crest with gold filigree and diamond emblem replacing default Next.js favicon (`src/app/icon.svg`, `public/favicon.svg`, `public/favicon.ico`, and `apple-touch-icon.png`).

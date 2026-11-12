@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
 import { BrandLogo } from '@/components/ui/DiamondLogo';
 import {
@@ -17,21 +17,122 @@ import {
   Package,
 } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface NavLinkItem {
+  label: string;
+  href: string;
+  category?: string;
+}
+
+const navLinks: NavLinkItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'Necklaces', href: '/shop?category=Necklaces', category: 'Necklaces' },
+  { label: 'Rings', href: '/shop?category=Rings', category: 'Rings' },
+  { label: 'Bangles', href: '/shop?category=Bangles', category: 'Bangles' },
+  { label: 'Earrings', href: '/shop?category=Earrings', category: 'Earrings' },
+  { label: 'Bridal', href: '/shop?category=Bridal+Sets', category: 'Bridal Sets' },
+];
+
+function isLinkActive(link: NavLinkItem, pathname: string, currentCategory: string | null) {
+  if (link.href === '/') {
+    return pathname === '/';
+  }
+  if (pathname === '/shop') {
+    if (!currentCategory || currentCategory === 'All') {
+      return link.label === 'Shop';
+    }
+    return link.category?.toLowerCase() === currentCategory.toLowerCase();
+  }
+  return false;
+}
+
+function DesktopNavLinks() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentCategory = searchParams?.get('category') || null;
+
+  return (
+    <nav className="hidden md:flex items-center gap-7">
+      {navLinks.map((link) => {
+        const isActive = isLinkActive(link, pathname, currentCategory);
+        return (
+          <Link
+            key={link.label}
+            href={link.href}
+            className={`group relative text-sm font-medium transition duration-200 py-1.5 ${
+              isActive
+                ? 'text-[#0E3B2E] font-semibold'
+                : 'text-[#1C1917]/80 hover:text-[#0E3B2E]'
+            }`}
+          >
+            {link.label}
+            {/* Expanding Underline */}
+            <span
+              className={`absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-transform duration-300 ease-out origin-center ${
+                isActive
+                  ? 'bg-[#0E3B2E] scale-x-100'
+                  : 'bg-[#B8893B] scale-x-0 group-hover:scale-x-100'
+              }`}
+            />
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
+
+function DesktopNavFallback() {
+  const pathname = usePathname();
+  return (
+    <nav className="hidden md:flex items-center gap-7">
+      {navLinks.map((link) => (
+        <span
+          key={link.label}
+          className={`text-sm font-medium py-1.5 ${
+            link.href === '/' && pathname === '/'
+              ? 'text-[#0E3B2E] font-semibold'
+              : 'text-[#1C1917]/80'
+          }`}
+        >
+          {link.label}
+        </span>
+      ))}
+    </nav>
+  );
+}
+
+function MobileNavLinks({ onClose }: { onClose: () => void }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentCategory = searchParams?.get('category') || null;
+
+  return (
+    <div className="flex flex-col space-y-1">
+      {navLinks.map((link) => {
+        const isActive = isLinkActive(link, pathname, currentCategory);
+        return (
+          <Link
+            key={link.label}
+            href={link.href}
+            onClick={onClose}
+            className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+              isActive
+                ? 'bg-[#0E3B2E] text-white font-semibold'
+                : 'text-[#1C1917] hover:bg-[#F2ECDF]'
+            }`}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+export const Header: React.FC = () => {
   const { isLoggedIn, user, login, logout, cartCount, wishlist, goldRates } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-
-  const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Shop', href: '/shop' },
-    { label: 'Necklaces', href: '/shop?category=Necklaces' },
-    { label: 'Rings', href: '/shop?category=Rings' },
-    { label: 'Bangles', href: '/shop?category=Bangles' },
-    { label: 'Earrings', href: '/shop?category=Earrings' },
-    { label: 'Bridal', href: '/shop?category=Bridal+Sets' },
-  ];
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#FAF6EE] shadow-sm">
@@ -67,35 +168,9 @@ export const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Nav Links with Expanding Gold Filament Underline */}
-          <nav className="hidden md:flex items-center gap-7">
-            {navLinks.map((link) => {
-              const isActive =
-                link.href === '/'
-                  ? pathname === '/'
-                  : pathname.startsWith(link.href.split('?')[0]);
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`group relative text-sm font-medium transition duration-200 py-1.5 ${
-                    isActive
-                      ? 'text-[#0E3B2E] font-semibold'
-                      : 'text-[#1C1917]/80 hover:text-[#0E3B2E]'
-                  }`}
-                >
-                  {link.label}
-                  {/* Expanding Underline */}
-                  <span
-                    className={`absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-transform duration-300 ease-out origin-center ${
-                      isActive
-                        ? 'bg-[#0E3B2E] scale-x-100'
-                        : 'bg-[#B8893B] scale-x-0 group-hover:scale-x-100'
-                    }`}
-                  />
-                </Link>
-              );
-            })}
-          </nav>
+          <Suspense fallback={<DesktopNavFallback />}>
+            <DesktopNavLinks />
+          </Suspense>
 
           {/* Right Action Icons & Auth */}
           <div className="flex items-center gap-3 sm:gap-4">
@@ -116,7 +191,7 @@ export const Header: React.FC = () => {
             >
               <Heart className="w-5 h-5" />
               {wishlist.length > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold animate-pulse">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold shadow-xs">
                   {wishlist.length}
                 </span>
               )}
@@ -212,18 +287,9 @@ export const Header: React.FC = () => {
       {/* Mobile Nav Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#FAF6EE] border-b border-[#E7DFD0] px-4 pt-3 pb-6 space-y-3">
-          <div className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-md text-sm font-medium text-[#1C1917] hover:bg-[#F2ECDF]"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          <Suspense fallback={null}>
+            <MobileNavLinks onClose={() => setMobileMenuOpen(false)} />
+          </Suspense>
           <div className="pt-3 border-t border-[#E7DFD0] flex flex-col gap-2">
             {isLoggedIn ? (
               <>
