@@ -41,6 +41,15 @@ A floating button at the bottom-left of every screen allows the client or evalua
 - Jump directly to any of the 18 storefront and admin routes.
 - Switch between **Guest Mode** and **Customer Logged In** with 1 click to test checkout authentication gates.
 
+### 5. Brand Identity, Favicon & Micro-Animations
+- **Header & Navigation Logo:** Handcrafted geometric 8-facet brilliant diamond emblem in 22K gold metallic gradients with Playfair Display serif lettering ("MADNI") and high-fashion tracked subtitle ("JEWELLER").
+- **Device Responsiveness:** Scales smoothly across mobile (`w-7 h-7`), tablet (`w-8 h-8`), and desktop (`w-9 h-9`) viewports without crowding navigation actions.
+- **Micro-Interactions & Animations:**
+  - Ambient 4-point radiant diamond sparkle twinkle on the crown facet (`animate-gem-twinkle`).
+  - Diagonal facet light sheen sweep (`animate-facet-sheen`).
+  - Interactive hover flourish: rotating sparkle bloom, logo micro-lift, and continuous metallic gold light wave across "JEWELLER".
+- **Favicon Suite:** Custom royal emerald crest with gold filigree and diamond emblem replacing default Next.js favicon (`src/app/icon.svg`, `public/favicon.svg`, `public/favicon.ico`, and `apple-touch-icon.png`).
+
 ---
 
 ## 🎨 Design System & Tokens

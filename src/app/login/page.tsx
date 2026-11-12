@@ -26,7 +26,9 @@ export default function LoginPage() {
       {/* Left Emerald Brand Column */}
       <div className="hidden lg:flex lg:col-span-5 bg-[#0E3B2E] p-12 flex-col justify-between text-white relative overflow-hidden">
         <div>
-          <BrandLogo variant="light" />
+          <Link href="/" className="group inline-block">
+            <BrandLogo variant="light" size="responsive" />
+          </Link>
         </div>
 
         <div className="flex flex-col items-center justify-center my-auto">

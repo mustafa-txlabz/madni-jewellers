@@ -9,7 +9,9 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
-            <BrandLogo variant="light" />
+            <Link href="/" className="group inline-block focus:outline-none">
+              <BrandLogo variant="light" size="responsive" />
+            </Link>
             <p className="text-sm text-[#F3E7CC]/80 leading-relaxed max-w-sm font-light">
               Fine gold and diamond jewellery, crafted with care and priced transparently. Order online, pay your way.
             </p>

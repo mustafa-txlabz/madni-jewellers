@@ -61,3 +61,125 @@ h1, h2, h3, h4, .font-serif {
   @apply bg-[#F2ECDF] text-[#1C1917] hover:bg-[#E9E1D1] transition-all duration-200 font-medium rounded-md px-5 py-2.5 inline-flex items-center justify-center gap-2;
 }
 
+/* ==========================================================================
+   Luxury Brand Logo & Facet Animations
+   ========================================================================== */
+
+@keyframes gem-twinkle {
+  0%, 100% {
+    transform: scale(0.9) rotate(0deg);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(247, 223, 148, 0.5));
+  }
+  50% {
+    transform: scale(1.35) rotate(45deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(255, 245, 214, 0.95)) drop-shadow(0 0 12px rgba(184, 137, 59, 0.6));
+  }
+}
+
+@keyframes gem-twinkle-fast {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 2px rgba(247, 223, 148, 0.4));
+  }
+  50% {
+    transform: scale(1.4) rotate(90deg);
+    filter: drop-shadow(0 0 8px rgba(255, 248, 230, 1)) drop-shadow(0 0 14px rgba(216, 168, 78, 0.8));
+  }
+  100% {
+    transform: scale(1.1) rotate(180deg);
+    filter: drop-shadow(0 0 3px rgba(247, 223, 148, 0.5));
+  }
+}
+
+@keyframes facet-sheen {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  35% {
+    transform: translateX(150%) skewX(-25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(150%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes gold-shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gem-twinkle {
+  animation: gem-twinkle 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-facet-sheen {
+  animation: facet-sheen 6.5s ease-in-out infinite;
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #B8893B 0%,
+    #D8A84E 20%,
+    #FFF4D0 50%,
+    #D8A84E 80%,
+    #B8893B 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+}
+
+.gold-shimmer-text-light {
+  background: linear-gradient(
+    90deg,
+    #E5C578 0%,
+    #FAF0D7 20%,
+    #FFFFFF 50%,
+    #FAF0D7 80%,
+    #E5C578 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+}
+
+.group:hover .gold-shimmer-text,
+.group:hover .gold-shimmer-text-light {
+  animation: gold-shimmer-sweep 2.2s linear infinite;
+}
+
+.group:hover .group-sparkle {
+  animation: gem-twinkle-fast 1s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gem-twinkle,
+  .animate-facet-sheen,
+  .gold-shimmer-text,
+  .gold-shimmer-text-light,
+  .group:hover .gold-shimmer-text,
+  .group:hover .group-sparkle {
+    animation: none !important;
+  }
+}
+
+

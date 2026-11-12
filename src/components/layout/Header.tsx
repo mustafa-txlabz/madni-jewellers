@@ -51,8 +51,12 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 border-b border-[#E7DFD0]">
           {/* Logo */}
-          <Link href="/" className="hover:opacity-90 transition">
-            <BrandLogo variant="dark" />
+          <Link
+            href="/"
+            className="group flex items-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B8893B] rounded-md py-1"
+            title="Madni Jeweller Home"
+          >
+            <BrandLogo variant="dark" size="responsive" />
           </Link>
 
           {/* Desktop Nav Links */}

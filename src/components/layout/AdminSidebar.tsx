@@ -29,11 +29,10 @@ export const AdminSidebar: React.FC = () => {
     <aside className="w-64 bg-[#0E3B2E] text-white flex flex-col justify-between p-6 flex-shrink-0 h-full overflow-y-auto border-r border-[#08261E]">
       <div className="space-y-8">
         {/* Brand */}
-        <div className="space-y-1">
-          <BrandLogo variant="light" />
-          <span className="text-[10px] uppercase tracking-widest text-[#F3E7CC]/70 font-semibold pl-9 block">
-            Admin Panel
-          </span>
+        <div>
+          <Link href="/admin" className="group block focus:outline-none">
+            <BrandLogo variant="light" subtitle="Admin Panel" size="md" />
+          </Link>
         </div>
 
         {/* Navigation */}

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <!-- Background Royal Emerald Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#145241" />
+      <stop offset="50%" stop-color="#0E3B2E" />
+      <stop offset="100%" stop-color="#07221A" />
+    </linearGradient>
+
+    <!-- Outer Gold Border Gradient -->
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE8AB" />
+      <stop offset="35%" stop-color="#D8A84E" />
+      <stop offset="70%" stop-color="#B8893B" />
+      <stop offset="100%" stop-color="#805615" />
+    </linearGradient>
+
+    <!-- Crown Table Gradient (bright top facet) -->
+    <linearGradient id="tableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="40%" stop-color="#F6E29F" />
+      <stop offset="100%" stop-color="#D4A143" />
+    </linearGradient>
+
+    <!-- Highlight Facet -->
+    <linearGradient id="facetHi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5D6" />
+      <stop offset="100%" stop-color="#D8A84E" />
+    </linearGradient>
+
+    <!-- Mid Facet -->
+    <linearGradient id="facetMid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C578" />
+      <stop offset="100%" stop-color="#9E6F22" />
+    </linearGradient>
+
+    <!-- Shadow Facet -->
+    <linearGradient id="facetShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8E631F" />
+      <stop offset="100%" stop-color="#553A0D" />
+    </linearGradient>
+
+    <!-- Center Pavilion -->
+    <linearGradient id="pavilionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9C97B" />
+      <stop offset="60%" stop-color="#B8893B" />
+      <stop offset="100%" stop-color="#734B10" />
+    </linearGradient>
+  </defs>
+
+  <!-- Luxury Emerald Shield Badge -->
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#bgGrad)" stroke="url(#goldBorder)" stroke-width="2" />
+  
+  <!-- Subtle Filigree Border Ring -->
+  <rect x="5.5" y="5.5" width="53" height="53" rx="12" fill="none" stroke="#D8A84E" stroke-width="0.75" stroke-opacity="0.45" stroke-dasharray="2.5 2.5" />
+
+  <!-- The Signature Faceted Diamond (Centered in badge) -->
+  <g transform="translate(0, 1)">
+    <!-- Pavilion Left Shadow Wing -->
+    <polygon points="13,29 27,29 32,49" fill="url(#facetShade)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Pavilion Right Highlight Wing -->
+    <polygon points="37,29 51,29 32,49" fill="url(#facetHi)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Pavilion Center Main -->
+    <polygon points="27,29 37,29 32,49" fill="url(#pavilionGrad)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Crown Outer Left Kite -->
+    <polygon points="23,18 17,29 13,29" fill="url(#facetShade)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Crown Inner Left Star -->
+    <polygon points="23,18 27,29 17,29" fill="url(#facetMid)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Crown Table (Top Facet) -->
+    <polygon points="23,18 41,18 37,29 27,29" fill="url(#tableGrad)" stroke="#FAF0D7" stroke-width="0.8" stroke-linejoin="round" />
+
+    <!-- Crown Inner Right Star -->
+    <polygon points="41,18 47,29 37,29" fill="url(#facetHi)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Crown Outer Right Kite -->
+    <polygon points="41,18 51,29 47,29" fill="url(#facetMid)" stroke="#FAF0D7" stroke-width="0.75" stroke-linejoin="round" />
+
+    <!-- Inner Facet Accent Line -->
+    <line x1="32" y1="29" x2="32" y2="49" stroke="#FFF7E2" stroke-width="0.75" stroke-opacity="0.8" />
+  </g>
+
+  <!-- Radiant 4-Point Star Glint (Top Right Table Facet) -->
+  <g transform="translate(44, 15)">
+    <!-- Soft Glow -->
+    <circle cx="0" cy="0" r="5" fill="#FFF4D0" fill-opacity="0.35" />
+    <!-- 4-point Diamond Star Flare -->
+    <path d="M0,-8 Q0,0 8,0 Q0,0 0,8 Q0,0 -8,0 Q0,0 0,-8 Z" fill="#FFFFFF" />
+    <!-- Micro Core -->
+    <circle cx="0" cy="0" r="1.5" fill="#FFF8E7" />
+  </g>
+</svg>
+

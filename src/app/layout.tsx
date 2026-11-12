@@ -21,6 +21,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'Madni Jeweller | Fine Gold & Diamond Jewellery',
   description: 'Handcrafted gold and diamond jewellery for life’s most precious moments. Handcrafted in Pakistan with certified purity.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({
