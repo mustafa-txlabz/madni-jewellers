@@ -35,16 +35,23 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#FAF6EE] shadow-sm">
-      {/* Top Gold Rate & Announcement Bar */}
-      <div className="bg-[#0E3B2E] text-white text-xs py-2 px-4 text-center font-normal tracking-wide">
+      {/* Top Gold Rate & Announcement Bar with Live Market Indicator */}
+      <div className="bg-[#0E3B2E] text-white text-xs py-2 px-4 text-center font-normal tracking-wide flex items-center justify-center flex-wrap gap-2">
+        <div className="inline-flex items-center gap-1.5 bg-[#145241] px-2.5 py-0.5 rounded-full border border-[#B8893B]/40 shadow-xs">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5C578] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F3E7CC]"></span>
+          </span>
+          <span className="text-[10px] text-[#F3E7CC] font-semibold tracking-wider uppercase">Live Rate</span>
+        </div>
         <span className="opacity-90">
           Today’s gold rate (22K):{' '}
           <strong className="text-[#F3E7CC] font-semibold">
             Rs. {goldRates['22K'].toLocaleString()} / tola
           </strong>
         </span>
-        <span className="mx-2 opacity-40">•</span>
-        <span className="opacity-90">Free insured delivery across Pakistan</span>
+        <span className="mx-1 opacity-40 hidden sm:inline">•</span>
+        <span className="opacity-90 hidden sm:inline">Free insured delivery across Pakistan</span>
       </div>
 
       {/* Main Navbar */}
@@ -59,7 +66,7 @@ export const Header: React.FC = () => {
             <BrandLogo variant="dark" size="responsive" />
           </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav Links with Expanding Gold Filament Underline */}
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => {
               const isActive =
@@ -70,13 +77,21 @@ export const Header: React.FC = () => {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-sm font-medium transition duration-150 ${
+                  className={`group relative text-sm font-medium transition duration-200 py-1.5 ${
                     isActive
-                      ? 'text-[#0E3B2E] font-semibold border-b-2 border-[#0E3B2E] pb-0.5'
+                      ? 'text-[#0E3B2E] font-semibold'
                       : 'text-[#1C1917]/80 hover:text-[#0E3B2E]'
                   }`}
                 >
                   {link.label}
+                  {/* Expanding Underline */}
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-transform duration-300 ease-out origin-center ${
+                      isActive
+                        ? 'bg-[#0E3B2E] scale-x-100'
+                        : 'bg-[#B8893B] scale-x-0 group-hover:scale-x-100'
+                    }`}
+                  />
                 </Link>
               );
             })}
@@ -87,7 +102,7 @@ export const Header: React.FC = () => {
             {/* Search */}
             <Link
               href="/shop"
-              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition"
+              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition hover:scale-105 active:scale-95"
               title="Search jewellery"
             >
               <Search className="w-5 h-5" />
@@ -96,26 +111,26 @@ export const Header: React.FC = () => {
             {/* Wishlist */}
             <Link
               href="/shop"
-              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition relative"
+              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition relative hover:scale-105 active:scale-95"
               title="Wishlist"
             >
               <Heart className="w-5 h-5" />
               {wishlist.length > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold animate-pulse">
                   {wishlist.length}
                 </span>
               )}
             </Link>
 
-            {/* Cart */}
+            {/* Cart with pop bounce badge */}
             <Link
               href="/cart"
-              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition relative"
+              className="p-2 text-[#1C1917] hover:text-[#0E3B2E] hover:bg-[#F2ECDF] rounded-full transition relative hover:scale-105 active:scale-95"
               title="Shopping Cart"
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#B8893B] text-white text-[10px] rounded-full flex items-center justify-center font-bold shadow-xs">
                   {cartCount}
                 </span>
               )}

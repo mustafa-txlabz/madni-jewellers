@@ -65,11 +65,6 @@ export const DiamondEmblem: React.FC<DiamondEmblemProps> = ({
             <stop offset="60%" stopColor={goldPrimary} />
             <stop offset="100%" stopColor={goldDark} />
           </linearGradient>
-
-          {/* Dynamic Light Sheen Clip */}
-          <clipPath id={`gemClip_${uid}`}>
-            <polygon points="17,10 31,10 42,19 24,40 6,19" />
-          </clipPath>
         </defs>
 
         {/* Ambient subtle backglow */}
@@ -151,21 +146,6 @@ export const DiamondEmblem: React.FC<DiamondEmblemProps> = ({
             strokeOpacity="0.75"
           />
         </g>
-
-        {/* Diagonal Light Sheen Overlay across facets */}
-        {animated && (
-          <g clipPath={`url(#gemClip_${uid})`}>
-            <rect
-              x="-20"
-              y="0"
-              width="24"
-              height="48"
-              fill="white"
-              fillOpacity="0.35"
-              className="animate-facet-sheen pointer-events-none"
-            />
-          </g>
-        )}
 
         {/* Radiant Sparkle Star Glint (Top Right Crown Corner) */}
         {showSparkle && (
@@ -266,20 +246,20 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           Madni
         </span>
 
-        {/* Sub-Brand Jewellery Atelier Label with Metallic Gold Shimmer */}
+        {/* Sub-Brand Jewellery Atelier Label */}
         <div className="flex items-center gap-1.5 mt-0.5 sm:mt-1">
           <span
-            className={`font-sans font-semibold uppercase leading-tight ${
+            className={`font-sans font-semibold uppercase leading-tight transition-colors duration-200 ${
               sizeConfig.subtitle
             } ${
-              isLight ? 'gold-shimmer-text-light' : 'gold-shimmer-text'
+              isLight ? 'text-[#F3E7CC]' : 'text-[#B8893B]'
             }`}
           >
             Jeweller
           </span>
           <span
             className={`inline-block w-1 h-1 rounded-full ${
-              isLight ? 'bg-[#E5C578]/70' : 'bg-[#B8893B]/70'
+              isLight ? 'bg-[#E5C578]' : 'bg-[#B8893B]'
             }`}
           />
         </div>

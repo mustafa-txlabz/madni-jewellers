@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ProductCard } from '@/components/product/ProductCard';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { useApp } from '@/context/AppContext';
+import { ScrollReveal, ScrollStagger } from '@/components/ui/ScrollReveal';
 import {
   ShieldCheck,
   Truck,
@@ -69,7 +70,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Content */}
-              <div className="lg:col-span-7 space-y-6">
+              <ScrollReveal animation="fade-up" duration={750} className="lg:col-span-7 space-y-6">
                 <span className="text-xs font-semibold tracking-[0.2em] text-[#B8893B] uppercase">
                   Handcrafted Gold & Diamond Jewellery
                 </span>
@@ -89,7 +90,7 @@ export default function HomePage() {
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
                     href="/shop"
-                    className="px-6 py-3.5 bg-[#0E3B2E] text-white text-sm font-medium rounded-lg hover:bg-[#08261E] transition inline-flex items-center gap-2 shadow-sm"
+                    className="px-6 py-3.5 bg-[#0E3B2E] text-white text-sm font-medium rounded-lg hover:bg-[#08261E] transition inline-flex items-center gap-2 shadow-sm hover:-translate-y-0.5"
                   >
                     Shop Collection
                     <ArrowRight className="w-4 h-4" />
@@ -97,7 +98,7 @@ export default function HomePage() {
 
                   <Link
                     href="/shop?category=Bridal+Sets"
-                    className="px-6 py-3.5 border border-[#E7DFD0] bg-white text-[#1C1917] text-sm font-medium rounded-lg hover:bg-[#FAF6EE] transition"
+                    className="px-6 py-3.5 border border-[#E7DFD0] bg-white text-[#1C1917] text-sm font-medium rounded-lg hover:bg-[#FAF6EE] transition hover:-translate-y-0.5 shadow-xs"
                   >
                     Explore Bridal
                   </Link>
@@ -118,11 +119,16 @@ export default function HomePage() {
                     <span>Secure payment</span>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right Hero Arch Visual */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-t-full rounded-b-2xl shadow-elevated overflow-hidden border border-[#E7DFD0]">
+              <ScrollReveal animation="zoom-in" delay={150} duration={850} className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-t-full rounded-b-2xl shadow-elevated overflow-hidden border border-[#E7DFD0] group">
+                  {/* Diagonal White Light Sweep on Hover */}
+                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-t-full rounded-b-2xl">
+                    <div className="absolute -inset-full w-[250%] h-[250%] bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                  </div>
+
                   <ProductImage
                     src="/images/designs/hero-jewellery.jpg"
                     alt="Madni Jeweller Handcrafted Bridal Gold Set"
@@ -132,22 +138,23 @@ export default function HomePage() {
                     priority={true}
                   />
 
-                  {/* Floating Gold Rate Pill */}
-                  <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-3.5 shadow-lg border border-[#E7DFD0] flex items-center justify-between text-xs z-10">
+                  {/* Floating Gold Rate Pill with Micro Live Pulse */}
+                  <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-3.5 shadow-lg border border-[#E7DFD0] flex items-center justify-between text-xs z-10 transition-transform duration-300 hover:scale-[1.02]">
                     <div>
-                      <p className="text-[10px] text-[#6B645A] uppercase tracking-wider font-semibold">
+                      <p className="text-[10px] text-[#6B645A] uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
                         Today’s 22K Rate
                       </p>
                       <p className="font-serif font-bold text-[#0E3B2E] text-base">
                         Rs. 395,000
                       </p>
                     </div>
-                    <span className="px-2.5 py-1 bg-[#E8F5EF] text-[#157F4F] text-[11px] font-medium rounded-full">
+                    <span className="px-2.5 py-1 bg-[#E8F5EF] text-[#157F4F] text-[11px] font-semibold rounded-full border border-emerald-200">
                       Live Verified
                     </span>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -155,16 +162,20 @@ export default function HomePage() {
         {/* SHOP BY CATEGORY */}
         <section className="py-16 sm:py-20 border-b border-[#E7DFD0]/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
+            <ScrollReveal animation="fade-up" className="mb-10">
               <span className="text-xs font-semibold tracking-[0.2em] text-[#B8893B] uppercase">
                 Collections
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#0E3B2E] font-medium mt-1">
                 Shop by category
               </h2>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8">
+            <ScrollStagger
+              staggerDelay={90}
+              animation="fade-up"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8"
+            >
               {categories.map((cat) => (
                 <Link
                   key={cat.name}
@@ -174,6 +185,11 @@ export default function HomePage() {
                   <div
                     className={`w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ${cat.bg} shadow-sm group-hover:scale-105 transition duration-300 relative border-2 border-[#E7DFD0] group-hover:border-[#B8893B]`}
                   >
+                    {/* Diagonal White Light Sweep across Category Image on Hover */}
+                    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-full">
+                      <div className="absolute -inset-full w-[250%] h-[250%] bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                    </div>
+
                     <ProductImage
                       src={cat.image}
                       alt={cat.name}
@@ -188,14 +204,14 @@ export default function HomePage() {
                   <p className="text-xs text-[#6B645A]">{cat.count}</p>
                 </Link>
               ))}
-            </div>
+            </ScrollStagger>
           </div>
         </section>
 
         {/* NEW ARRIVALS */}
         <section className="py-16 sm:py-20 border-b border-[#E7DFD0]/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between mb-10">
+            <ScrollReveal animation="fade-up" className="flex items-end justify-between mb-10">
               <div>
                 <span className="text-xs font-semibold tracking-[0.2em] text-[#B8893B] uppercase">
                   Just In
@@ -211,70 +227,87 @@ export default function HomePage() {
                 View all
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <ScrollStagger
+              staggerDelay={120}
+              animation="fade-up"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+            >
               {newArrivals.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
-            </div>
+            </ScrollStagger>
           </div>
         </section>
 
         {/* BRIDAL & CUSTOM ORDERS BANNER */}
         <section className="py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#0E3B2E] text-white rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-elevated">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                <div className="lg:col-span-8 space-y-4">
-                  <span className="text-xs font-semibold tracking-[0.2em] text-[#F3E7CC] uppercase flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#B8893B]" />
-                    Bridal & Custom Orders
-                  </span>
-                  <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight text-white">
-                    Designing something <br />
-                    truly special?
-                  </h3>
-                  <p className="text-sm sm:text-base text-white/80 max-w-lg leading-relaxed font-light">
-                    Share your design idea and our master craftsmen will quote and create it for you.
-                    Bridal sets, custom rings and more.
-                  </p>
-                  <div className="pt-2">
-                    <Link
-                      href="/shop?category=Bridal+Sets"
-                      className="px-6 py-3.5 bg-[#B8893B] text-white text-sm font-medium rounded-lg hover:bg-[#966E2B] transition inline-flex items-center gap-2 shadow-sm"
-                    >
-                      Request a Custom Design
-                    </Link>
+            <ScrollReveal animation="fade-up" duration={800}>
+              <div className="bg-[#0E3B2E] text-white rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-elevated">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                  <div className="lg:col-span-8 space-y-4">
+                    <span className="text-xs font-semibold tracking-[0.2em] text-[#F3E7CC] uppercase flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#B8893B]" />
+                      Bridal & Custom Orders
+                    </span>
+                    <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight text-white">
+                      Designing something <br />
+                      truly special?
+                    </h3>
+                    <p className="text-sm sm:text-base text-white/80 max-w-lg leading-relaxed font-light">
+                      Share your design idea and our master craftsmen will quote and create it for you.
+                      Bridal sets, custom rings and more.
+                    </p>
+                    <div className="pt-2">
+                      <Link
+                        href="/shop?category=Bridal+Sets"
+                        className="px-6 py-3.5 bg-[#B8893B] text-white text-sm font-medium rounded-lg hover:bg-[#966E2B] transition inline-flex items-center gap-2 shadow-sm hover:-translate-y-0.5"
+                      >
+                        Request a Custom Design
+                      </Link>
+                    </div>
                   </div>
-                </div>
 
-                <div className="lg:col-span-4 flex justify-center lg:justify-end">
-                  <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
-                    <ProductImage
-                      src="/images/designs/custom-design-banner.jpg"
-                      alt="Madni Custom Jewellery Workshop"
-                      bgTint="bg-[#13493A]"
-                      emblemSize={70}
-                      className="w-full h-full"
-                    />
+                  <div className="lg:col-span-4 flex justify-center lg:justify-end">
+                    <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl relative group">
+                      {/* Diagonal White Light Sweep on Image Hover */}
+                      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-2xl">
+                        <div className="absolute -inset-full w-[250%] h-[250%] bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                      </div>
+
+                      <ProductImage
+                        src="/images/designs/custom-design-banner.jpg"
+                        alt="Madni Custom Jewellery Workshop"
+                        bgTint="bg-[#13493A]"
+                        emblemSize={70}
+                        className="w-full h-full"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* WHY SHOP WITH MADNI JEWELLER */}
         <section className="py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0E3B2E] font-medium mb-12">
-              Why shop with Madni Jeweller
-            </h2>
+            <ScrollReveal animation="fade-up">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#0E3B2E] font-medium mb-12">
+                Why shop with Madni Jeweller
+              </h2>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ScrollStagger
+              staggerDelay={100}
+              animation="fade-up"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
               {/* Feature 1 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300">
+              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <ShieldCheck className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -287,7 +320,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300">
+              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <CreditCard className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -300,7 +333,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300">
+              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <Lock className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -313,7 +346,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300">
+              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <Truck className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -324,7 +357,7 @@ export default function HomePage() {
                   Fully insured doorstep delivery across Pakistan.
                 </p>
               </div>
-            </div>
+            </ScrollStagger>
           </div>
         </section>
       </main>

@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ProductCard } from '@/components/product/ProductCard';
+import { ScrollStagger, ScrollReveal } from '@/components/ui/ScrollReveal';
 import { useApp } from '@/context/AppContext';
 import { ChevronRight, Filter, X, ChevronLeft } from 'lucide-react';
 
@@ -254,11 +255,16 @@ function ShopContent() {
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <ScrollStagger
+                  key={`${selectedCategory}-${selectedPurity}-${sortBy}-${currentPage}`}
+                  staggerDelay={70}
+                  animation="fade-up"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+                >
                   {sortedProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
-                </div>
+                </ScrollStagger>
               )}
 
               {/* Pagination */}

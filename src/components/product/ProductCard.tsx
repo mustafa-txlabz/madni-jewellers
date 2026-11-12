@@ -12,14 +12,19 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const isWishlisted = wishlist.includes(product.id);
 
   return (
-    <div className="group flex flex-col transition duration-300">
+    <div className="group flex flex-col transition-all duration-300">
       {/* Product Image Frame */}
       <div
-        className={`relative aspect-square rounded-2xl ${product.bgTint} overflow-hidden transition-transform duration-300 group-hover:scale-[1.02] shadow-sm border border-[#E7DFD0]`}
+        className={`relative aspect-square rounded-2xl ${product.bgTint} overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-md border border-[#E7DFD0]`}
       >
+        {/* Diagonal White Light Sheen Sweep across Image on Hover */}
+        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-2xl">
+          <div className="absolute -inset-full w-[250%] h-[250%] bg-gradient-to-tr from-transparent via-white/45 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+        </div>
+
         {/* Top Badges */}
         {product.badge && (
-          <span className="absolute top-3 left-3 z-10 bg-[#0E3B2E] text-white text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm">
+          <span className="absolute top-3 left-3 z-20 bg-[#0E3B2E] text-white text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm">
             {product.badge}
           </span>
         )}
@@ -31,7 +36,7 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[#1C1917] hover:bg-white hover:text-red-500 transition shadow-sm"
+          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-white/85 backdrop-blur-sm flex items-center justify-center text-[#1C1917] hover:bg-white hover:text-red-500 hover:scale-110 active:scale-90 transition shadow-sm"
           title="Save to wishlist"
         >
           <Heart

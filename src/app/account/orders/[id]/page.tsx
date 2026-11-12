@@ -84,12 +84,15 @@ export default function OrderTrackingPage() {
               {/* Step 2: Payment Verified */}
               <div className="flex flex-col items-center text-center space-y-2 relative z-10">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  className={`w-8 h-8 rounded-full flex items-center justify-center relative ${
                     order.paymentStatus === 'Pending verification'
-                      ? 'bg-[#FAF3E0] text-[#B8893B]'
+                      ? 'bg-[#FAF3E0] text-[#B8893B] ring-2 ring-[#B8893B]'
                       : 'bg-[#0E3B2E] text-white'
                   }`}
                 >
+                  {order.paymentStatus === 'Pending verification' && (
+                    <span className="absolute -inset-1.5 rounded-full border-2 border-[#B8893B] animate-radar-pulse pointer-events-none" />
+                  )}
                   {order.paymentStatus === 'Pending verification' ? (
                     <Clock className="w-4 h-4 text-[#B8893B]" />
                   ) : (

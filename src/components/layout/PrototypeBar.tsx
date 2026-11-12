@@ -173,12 +173,12 @@ export const PrototypeBar: React.FC = () => {
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 bg-[#1C1917] hover:bg-[#2A2623] text-white px-3.5 py-2.5 rounded-full shadow-xl border border-[#3E3832] transition group"
+          className="flex items-center gap-2 bg-[#1C1917] hover:bg-[#2A2623] text-white px-3.5 py-2.5 rounded-full shadow-xl border border-[#B8893B]/40 gold-aura-breathe transition-all duration-300 group hover:scale-105 active:scale-95"
         >
-          <Layers className="w-4 h-4 text-[#B8893B] group-hover:rotate-12 transition-transform" />
+          <Layers className="w-4 h-4 text-[#B8893B] group-hover:rotate-45 transition-transform duration-300" />
           <span className="text-xs font-medium text-[#F3E7CC]">Prototype Pages</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          <ChevronUp className="w-3.5 h-3.5 text-white/60" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <ChevronUp className="w-3.5 h-3.5 text-white/60 group-hover:-translate-y-0.5 transition-transform" />
         </button>
       )}
     </div>
