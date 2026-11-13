@@ -14,16 +14,26 @@ import {
   LogOut,
 } from 'lucide-react';
 
+export interface AdminNavItem {
+  label: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+/* Single source of truth for admin navigation — used by both the desktop
+   sidebar and the mobile drawer so they can never drift out of sync. */
+export const adminNavItems: AdminNavItem[] = [
+  { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { label: 'Products', href: '/admin/products', icon: Package },
+  { label: 'Orders', href: '/admin/orders', icon: ShoppingBag },
+  { label: 'Payments', href: '/admin/payments', icon: CreditCard },
+  { label: 'Customers', href: '/admin/customers', icon: Users },
+];
+
 export const AdminSidebar: React.FC = () => {
   const pathname = usePathname();
 
-  const navItems = [
-    { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-    { label: 'Products', href: '/admin/products', icon: Package },
-    { label: 'Orders', href: '/admin/orders', icon: ShoppingBag },
-    { label: 'Payments', href: '/admin/payments', icon: CreditCard },
-    { label: 'Customers', href: '/admin/customers', icon: Users },
-  ];
+  const navItems = adminNavItems;
 
   return (
     <aside className="w-64 bg-[#0E3B2E] text-white flex flex-col justify-between p-6 flex-shrink-0 h-full overflow-y-auto border-r border-[#08261E]">

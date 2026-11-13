@@ -120,6 +120,31 @@ h1, h2, h3, h4, .font-serif {
   animation: radar-pulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
+/* ==========================================================================
+   Page / Element Entrance — gentle rise + fade (used on page load)
+   ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  /* `backwards` fill: shows the hidden start state on the very first frame (no
+     flash of content) but does NOT persist after the animation ends, so
+     fixed-position modals inside animated containers still position against
+     the viewport once the entrance completes. */
+  animation: fadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
 /* Breathing gold aura for floating prototype navigator */
 @keyframes gold-aura-breathe {
   0%, 100% {
@@ -135,6 +160,7 @@ h1, h2, h3, h4, .font-serif {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
   .animate-gem-twinkle,
   .group:hover .group-sparkle,
   .animate-radar-pulse,

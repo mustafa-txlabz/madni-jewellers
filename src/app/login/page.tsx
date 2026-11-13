@@ -22,7 +22,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#FAF6EE]">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#FAF6EE] animate-fadeIn">
       {/* Left Emerald Brand Column */}
       <div className="hidden lg:flex lg:col-span-5 bg-[#0E3B2E] p-12 flex-col justify-between text-white relative overflow-hidden">
         <div>

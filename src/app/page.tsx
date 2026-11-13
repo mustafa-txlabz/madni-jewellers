@@ -61,7 +61,7 @@ export default function HomePage() {
   const newArrivals = products.slice(0, 4);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1">
@@ -307,7 +307,7 @@ export default function HomePage() {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {/* Feature 1 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
+              <div className="h-full bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <ShieldCheck className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -320,7 +320,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
+              <div className="h-full bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <CreditCard className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -333,7 +333,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
+              <div className="h-full bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <Lock className="w-6 h-6 text-[#B8893B]" />
                 </div>
@@ -346,7 +346,7 @@ export default function HomePage() {
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
+              <div className="h-full bg-white rounded-2xl p-7 text-center border border-[#E7DFD0] shadow-card hover:shadow-elevated transition duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 rounded-full bg-[#FAF3E0] mx-auto flex items-center justify-center mb-5">
                   <Truck className="w-6 h-6 text-[#B8893B]" />
                 </div>

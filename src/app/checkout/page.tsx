@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollReveal, ScrollStagger } from '@/components/ui/ScrollReveal';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { useApp } from '@/context/AppContext';
 import {
@@ -60,7 +61,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1 py-8 sm:py-12">
@@ -99,7 +100,7 @@ export default function CheckoutPage() {
           <form onSubmit={handlePlaceOrder}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Column: Forms */}
-              <div className="lg:col-span-8 space-y-6">
+              <ScrollStagger className="lg:col-span-8 space-y-6" staggerDelay={110}>
                 {/* 1. Shipping Information */}
                 <div className="bg-white rounded-2xl border border-[#E7DFD0] p-6 sm:p-8 shadow-card space-y-5">
                   <h3 className="font-serif text-xl font-semibold text-[#1C1917]">
@@ -433,10 +434,11 @@ export default function CheckoutPage() {
                     </div>
                   </label>
                 </div>
-              </div>
+              </ScrollStagger>
 
               {/* Right Column: Order Summary */}
-              <div className="lg:col-span-4 bg-white rounded-2xl border border-[#E7DFD0] p-6 shadow-card space-y-6">
+              <ScrollReveal animation="slide-left" className="lg:col-span-4">
+                <div className="bg-white rounded-2xl border border-[#E7DFD0] p-6 shadow-card space-y-6">
                 <h3 className="font-serif text-xl font-semibold text-[#1C1917]">Your order</h3>
 
                 {/* Items Mini List */}
@@ -501,7 +503,8 @@ export default function CheckoutPage() {
                   <Lock className="w-3.5 h-3.5 text-[#B8893B]" />
                   Your details are encrypted and secure
                 </div>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           </form>
         </div>

@@ -12,7 +12,7 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const isWishlisted = wishlist.includes(product.id);
 
   return (
-    <div className="group flex flex-col transition-all duration-300">
+    <div className="group flex flex-col h-full transition-all duration-300">
       {/* Product Image Frame */}
       <div
         className={`relative aspect-square rounded-2xl ${product.bgTint} overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-md border border-[#E7DFD0]`}

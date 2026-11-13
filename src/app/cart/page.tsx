@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollReveal, ScrollStagger } from '@/components/ui/ScrollReveal';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { useApp } from '@/context/AppContext';
 import {
@@ -56,7 +57,7 @@ export default function CartPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1 py-8 sm:py-12">
@@ -100,7 +101,7 @@ export default function CartPage() {
                   </span>
                 </div>
 
-                <div className="divide-y divide-[#E7DFD0]">
+                <ScrollStagger className="divide-y divide-[#E7DFD0]" staggerDelay={80}>
                   {cart.map(({ product, quantity }) => (
                     <div
                       key={product.id}
@@ -171,11 +172,12 @@ export default function CartPage() {
                       </div>
                     </div>
                   ))}
-                </div>
+                </ScrollStagger>
               </div>
 
               {/* Right Order Summary Column */}
-              <div className="lg:col-span-4 bg-white rounded-2xl border border-[#E7DFD0] p-6 shadow-card space-y-5">
+              <ScrollReveal animation="slide-left" className="lg:col-span-4">
+                <div className="bg-white rounded-2xl border border-[#E7DFD0] p-6 shadow-card space-y-5">
                 <h3 className="font-serif text-xl font-semibold text-[#1C1917]">
                   Order Summary
                 </h3>
@@ -253,7 +255,8 @@ export default function CartPage() {
                   <Lock className="w-3.5 h-3.5 text-[#B8893B]" />
                   Secure checkout • Insured delivery
                 </div>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           )}
         </div>

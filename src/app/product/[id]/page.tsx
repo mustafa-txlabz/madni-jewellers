@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ProductCard } from '@/components/product/ProductCard';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { DiamondEmblem } from '@/components/ui/DiamondLogo';
+import { ScrollReveal, ScrollStagger } from '@/components/ui/ScrollReveal';
 import { useApp } from '@/context/AppContext';
 import {
   ChevronRight,
@@ -60,7 +61,7 @@ export default function ProductDetailPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1 py-8 sm:py-12">
@@ -336,14 +337,19 @@ export default function ProductDetailPage() {
 
           {/* You May Also Like */}
           <section className="mt-20 pt-12 border-t border-[#E7DFD0]">
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#0E3B2E] font-medium mb-8">
-              You may also like
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ScrollReveal animation="fade-up">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#0E3B2E] font-medium mb-8">
+                You may also like
+              </h2>
+            </ScrollReveal>
+            <ScrollStagger
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              staggerDelay={100}
+            >
               {relatedProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
-            </div>
+            </ScrollStagger>
           </section>
         </div>
       </main>

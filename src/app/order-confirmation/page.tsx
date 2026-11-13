@@ -22,7 +22,7 @@ function ConfirmationContent() {
   const order = orders.find((o) => o.id === orderId) || orders[0];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1 py-10 sm:py-16">

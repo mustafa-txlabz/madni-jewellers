@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollStagger } from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/Badge';
 import { ProductImage } from '@/components/ui/ProductImage';
 import { useApp } from '@/context/AppContext';
@@ -38,7 +39,7 @@ export default function MyOrdersPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE]">
+    <div className="min-h-screen flex flex-col bg-[#FAF6EE] animate-fadeIn">
       <Header />
 
       <main className="flex-1 py-8 sm:py-12">
@@ -135,7 +136,7 @@ export default function MyOrdersPage() {
               </div>
 
               {/* Order Cards */}
-              <div className="space-y-4">
+              <ScrollStagger className="space-y-4" staggerDelay={90}>
                 {filteredOrders.length === 0 ? (
                   <div className="bg-white rounded-2xl p-12 text-center border border-[#E7DFD0]">
                     <p className="font-serif text-lg text-[#1C1917]">No orders in this category</p>
@@ -219,7 +220,7 @@ export default function MyOrdersPage() {
                     </div>
                   ))
                 )}
-              </div>
+              </ScrollStagger>
             </div>
           </div>
         </div>
